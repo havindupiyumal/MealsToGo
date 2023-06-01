@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Platform, SafeAreaView } from "react-native";
 
 import { SearchBar } from "../../../components/SearchBar/SearchBar.component";
-import { RestaurantInfo } from "../components/restaurant-info.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 const isAndriod = Platform.OS === "andriod";
 
@@ -13,7 +13,7 @@ export const RestaurantScreen = () => {
         <SearchBar placeholder="Search Restaurants" />
       </View>
       <View style={styles.listView}>
-        <RestaurantInfo restaurant={{}} />
+        <RestaurantInfoCard restaurant={{}} />
       </View>
     </SafeAreaView>
   );
