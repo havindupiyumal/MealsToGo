@@ -1,9 +1,30 @@
 import React from "react";
-
 import { View, Text, StyleSheet } from "react-native";
 
-export const RestaurantInfo = () => {
-  return <Text>List</Text>;
+import { Card, Button } from "react-native-paper";
+
+export const RestaurantInfo = ({ restaurant }) => {
+  const {
+    name = "Some Restaurant",
+    icon,
+    photos = [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ],
+    address = "100 some random street",
+    isOpenNow = true,
+    rating = 5,
+    isClosedTemporarily = false,
+  } = restaurant;
+
+  return (
+    <Card elevation={5} style={styles.card}>
+      <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
+      <Text>{name}</Text>
+    </Card>
+  );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  card: { backgroundColor: "white" },
+  cover: { padding: 20, backgroundColor: "white" },
+});

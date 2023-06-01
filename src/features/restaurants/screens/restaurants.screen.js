@@ -13,7 +13,7 @@ export const RestaurantScreen = () => {
         <SearchBar placeholder="Search Restaurants" />
       </View>
       <View style={styles.listView}>
-        <RestaurantInfo />
+        <RestaurantInfo restaurant={{}} />
       </View>
     </SafeAreaView>
   );
@@ -26,12 +26,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   searchBar: {
-    backgroundColor: "green",
     padding: 16,
   },
   listView: {
     flex: 1,
-    backgroundColor: "blue",
     padding: 16,
   },
 });
