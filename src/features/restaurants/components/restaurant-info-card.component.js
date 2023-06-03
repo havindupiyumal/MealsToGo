@@ -1,50 +1,22 @@
 import React from "react";
-import { Image } from "react-native";
-import styled from "styled-components/native";
-import { SvgXml } from "react-native-svg";
 
 import Star from "../../../../assets/start";
 import Open from "../../../../assets/open";
 
-import { Card } from "react-native-paper";
-
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 
-const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.sizes[1]};
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const Info = styled.View`
-  padding: ${(props) => props.theme.sizes[1]};
-`;
-
-const Section = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const RatingView = styled.View`
-  flex-direction: row;
-`;
-
-const SectionEnd = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const Icon = styled(Image)`
-  width: 18px;
-  height: 18px;
-`;
-// keep the layout theme consistent. Not necessary
-const Rating = styled(SvgXml)``;
-const OpenNow = styled(SvgXml)``;
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Section,
+  RatingView,
+  SectionEnd,
+  Icon,
+  Rating,
+  OpenNow,
+} from "./restaurant-info-card.styles";
 
 export const RestaurantInfoCard = ({ restaurant }) => {
   const {
