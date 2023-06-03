@@ -9,6 +9,7 @@ import Open from "../../../../assets/open";
 import { Card } from "react-native-paper";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -19,19 +20,6 @@ const RestaurantCardCover = styled(Card.Cover)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-const Title = styled.Text`
-  font-family: ${(props) => props.theme.fonts.heading}
-  font-size: ${(props) => props.theme.fontSizes.body}
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
-
-const Address = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body}
-  font-size: ${(props) => props.theme.fontSizes.caption}
-  color: ${(props) => props.theme.colors.ui.primary};
-  padding-top: ${(props) => props.theme.sizes[0]};
-`;
-
 const Info = styled.View`
   padding: ${(props) => props.theme.sizes[1]};
 `;
@@ -39,24 +27,15 @@ const Info = styled.View`
 const Section = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding-top: ${(props) => props.theme.sizes[0]};
 `;
 
 const RatingView = styled.View`
   flex-direction: row;
-  padding-top: ${(props) => props.theme.sizes[1]};
 `;
 
 const SectionEnd = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding-top: ${(props) => props.theme.sizes[1]};
-`;
-
-const ClosedTemporary = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: ${(props) => props.theme.colors.text.error};
 `;
 
 const Icon = styled(Image)`
@@ -86,26 +65,30 @@ export const RestaurantInfoCard = ({ restaurant }) => {
     <RestaurantCard elevation={5}>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
-        <Title>{name}</Title>
-        <Section>
-          <RatingView>
-            {ratingArray.map(() => (
-              <Rating xml={Star} height={20} width={20} />
-            ))}
-          </RatingView>
-          <SectionEnd>
-            {isClosedTemporarily && (
-              <ClosedTemporary>CLOSED TEMPORARY</ClosedTemporary>
-            )}
-            <Spacer position="left" size="large">
-              {isOpenNow && <OpenNow xml={Open} height={20} width={20} />}
-            </Spacer>
-            <Spacer position="left" size="large">
-              <Icon source={{ uri: icon }} />
-            </Spacer>
-          </SectionEnd>
-        </Section>
-        <Address>{address}</Address>
+        <Text variant="body">{name}</Text>
+        <Spacer position="top" size="medium">
+          <Section>
+            <RatingView>
+              {ratingArray.map(() => (
+                <Rating xml={Star} height={20} width={20} />
+              ))}
+            </RatingView>
+            <SectionEnd>
+              {isClosedTemporarily && (
+                <Text variant="error">CLOSED TEMPORARY</Text>
+              )}
+              <Spacer position="left" size="large">
+                {isOpenNow && <OpenNow xml={Open} height={20} width={20} />}
+              </Spacer>
+              <Spacer position="left" size="large">
+                <Icon source={{ uri: icon }} />
+              </Spacer>
+            </SectionEnd>
+          </Section>
+        </Spacer>
+        <Spacer position="top" size="medium">
+          <Text variant="caption">{address}</Text>
+        </Spacer>
       </Info>
     </RestaurantCard>
   );
