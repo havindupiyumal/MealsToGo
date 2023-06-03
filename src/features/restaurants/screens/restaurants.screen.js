@@ -6,8 +6,10 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 import {
   SafeArea,
   SearchContainer,
-  RestaurantListContainer,
+  RestaurantList,
 } from "./restaurants.screen.styles";
+
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 export const RestaurantScreen = () => {
   return (
@@ -15,9 +17,15 @@ export const RestaurantScreen = () => {
       <SearchContainer>
         <SearchBar placeholder="Search Restaurants" />
       </SearchContainer>
-      <RestaurantListContainer>
-        <RestaurantInfoCard restaurant={{}} />
-      </RestaurantListContainer>
+      <RestaurantList
+        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
+        renderItem={() => (
+          <Spacer position="bottom" size="large">
+            <RestaurantInfoCard />
+          </Spacer>
+        )}
+        keyExtractor={(item) => item.name}
+      />
     </SafeArea>
   );
 };
