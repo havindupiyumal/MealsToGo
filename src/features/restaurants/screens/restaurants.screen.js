@@ -3,11 +3,9 @@ import React from "react";
 import { SearchBar } from "../../../components/SearchBar/SearchBar.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
-import {
-  SafeArea,
-  SearchContainer,
-  RestaurantList,
-} from "./restaurants.screen.styles";
+import { SafeArea } from "../../../components/utils/safe-area.component";
+
+import { SearchContainer, RestaurantList } from "./restaurants.screen.styles";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 
