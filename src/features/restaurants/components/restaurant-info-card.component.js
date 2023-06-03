@@ -8,7 +8,7 @@ import Open from "../../../../assets/open";
 
 import { Card } from "react-native-paper";
 
-import { Spacer } from "../../../components/Spacer/Spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -29,7 +29,7 @@ const Address = styled.Text`
   font-family: ${(props) => props.theme.fonts.body}
   font-size: ${(props) => props.theme.fontSizes.caption}
   color: ${(props) => props.theme.colors.ui.primary};
-  padding-top: ${(props) => props.theme.sizes[1]};
+  padding-top: ${(props) => props.theme.sizes[0]};
 `;
 
 const Info = styled.View`
@@ -39,7 +39,7 @@ const Info = styled.View`
 const Section = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding-top: ${(props) => props.theme.sizes[1]};
+  padding-top: ${(props) => props.theme.sizes[0]};
 `;
 
 const RatingView = styled.View`
@@ -87,7 +87,6 @@ export const RestaurantInfoCard = ({ restaurant }) => {
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
-        <Address>{address}</Address>
         <Section>
           <RatingView>
             {ratingArray.map(() => (
@@ -98,14 +97,15 @@ export const RestaurantInfoCard = ({ restaurant }) => {
             {isClosedTemporarily && (
               <ClosedTemporary>CLOSED TEMPORARY</ClosedTemporary>
             )}
-            <Spacer position="left" size="small">
+            <Spacer position="left" size="large">
               {isOpenNow && <OpenNow xml={Open} height={20} width={20} />}
             </Spacer>
-            <Spacer position="left" size="small">
+            <Spacer position="left" size="large">
               <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
         </Section>
+        <Address>{address}</Address>
       </Info>
     </RestaurantCard>
   );
