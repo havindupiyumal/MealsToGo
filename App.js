@@ -17,6 +17,8 @@ import { ThemeProvider } from "styled-components/native";
 
 import { theme } from "./src/infrastructure/theme";
 
+import { RestaurantsProvider } from "./src/services/restaurants/restaurants.context";
+
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -91,9 +93,11 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <ApplicationNavigationTabs />
-        </NavigationContainer>
+        <RestaurantsProvider>
+          <NavigationContainer>
+            <ApplicationNavigationTabs />
+          </NavigationContainer>
+        </RestaurantsProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

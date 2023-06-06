@@ -1,29 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { SearchBar } from "../../../components/SearchBar/SearchBar.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
-import { SafeArea } from "../../../components/utils/safe-area.component";
+import { SafeArea } from "../../../utils/safe-area.component";
+import { LoadingIndicator } from "../../../utils/loading-indicator";
 
 import { SearchContainer, RestaurantList } from "./restaurants.screen.styles";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+
+import { Text } from "../../../components/typography/text.component";
+
 export const RestaurantScreen = () => {
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+
   return (
     <SafeArea>
       <SearchContainer>
         <SearchBar placeholder="Search Restaurants" />
       </SearchContainer>
-      <RestaurantList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
-        renderItem={() => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard />
-          </Spacer>
-        )}
-        keyExtractor={(item) => item.name}
-      />
+
+      {error && <Text variant="error">Error loading Data!!!</Text>}
+
+      {isLoading ? (
+        <LoadingIndicator size={50} />
+      ) : (
+        <RestaurantList
+          data={restaurants}
+          renderItem={({ item }) => (
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard restaurant={item} />
+            </Spacer>
+          )}
+          keyExtractor={(item) => item.placeId}
+        />
+      )}
     </SafeArea>
   );
 };

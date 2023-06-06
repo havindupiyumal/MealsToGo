@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/havindudissanayake/.nvm/versions/node/v19.2.0/bin/node /opt/homebrew/bin/yarn add @expo/vector-icons/Ionicons
+  /Users/havindudissanayake/.nvm/versions/node/v19.2.0/bin/node /opt/homebrew/bin/yarn add @types/camelize
 
 PATH: 
   /Users/havindudissanayake/.nvm/versions/node/v19.2.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/havindudissanayake/.nvm/versions/node/v19.2.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin
@@ -14,8 +14,8 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@expo%2fvector-icons/Ionicons: Request "https://registry.yarnpkg.com/@expo%2fvector-icons/Ionicons" returned a 405
-      at params.callback [as _callback] (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:66997:18)
+  Error: https://registry.yarnpkg.com/@types%2fcamelize: Not found
+      at params.callback [as _callback] (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:66988:18)
       at self.callback (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (node:events:513:28)
       at Request.<anonymous> (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:141634:10)
@@ -44,6 +44,7 @@ npm manifest:
       "@expo-google-fonts/oswald": "^0.2.3",
       "@react-navigation/bottom-tabs": "^6.5.7",
       "@react-navigation/native": "^6.1.6",
+      "camelize": "^1.0.1",
       "expo": "^48.0.19",
       "expo-cli": "^6.3.8",
       "expo-font": "~11.1.1",
@@ -3816,6 +3817,11 @@ Lockfile:
   camelize@^1.0.0:
     version "1.0.1"
     resolved "https://registry.npmjs.org/camelize/-/camelize-1.0.1.tgz"
+    integrity sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==
+  
+  camelize@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.1.tgz#89b7e16884056331a35d6b5ad064332c91daa6c3"
     integrity sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==
   
   caniuse-api@^3.0.0:
