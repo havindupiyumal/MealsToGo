@@ -20,6 +20,7 @@ import {
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
+    placeId,
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
@@ -40,8 +41,13 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Spacer position="top" size="medium">
           <Section>
             <RatingView>
-              {ratingArray.map(() => (
-                <Rating xml={Star} height={20} width={20} />
+              {ratingArray.map((_, i) => (
+                <Rating
+                  key={`star-${restaurant.placeId}-${i}`}
+                  xml={Star}
+                  height={20}
+                  width={20}
+                />
               ))}
             </RatingView>
             <SectionEnd>

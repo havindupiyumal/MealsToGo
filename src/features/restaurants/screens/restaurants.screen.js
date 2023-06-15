@@ -1,18 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
-import { SearchBar } from "../../../components/SearchBar/SearchBar.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 import { SafeArea } from "../../../utils/safe-area.component";
 import { LoadingIndicator } from "../../../utils/loading-indicator";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
+import { Search } from "../../../features/restaurants/components/search.component";
 
 import { SearchContainer, RestaurantList } from "./restaurants.screen.styles";
 
-import { Spacer } from "../../../components/spacer/spacer.component";
-
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-
-import { Text } from "../../../components/typography/text.component";
 
 export const RestaurantScreen = () => {
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
@@ -20,10 +18,10 @@ export const RestaurantScreen = () => {
   return (
     <SafeArea>
       <SearchContainer>
-        <SearchBar placeholder="Search Restaurants" />
+        <Search />
       </SearchContainer>
 
-      {error && <Text variant="error">Error loading Data!!!</Text>}
+      {error && <Text variant="error">{error}</Text>}
 
       {isLoading ? (
         <LoadingIndicator size={50} />
