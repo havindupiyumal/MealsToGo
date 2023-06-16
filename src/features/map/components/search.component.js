@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 
+import { SearchContainer } from "./search.styles";
+
 import { LocationContext } from "../../../services/location/location.context";
 
 export const Search = () => {
@@ -20,11 +22,14 @@ export const Search = () => {
   }, [keyword]);
 
   return (
-    <Searchbar
-      placeholder="Search for a location"
-      value={searchKeyword}
-      onSubmitEditing={onSubmitEditingHandler}
-      onChangeText={onChangeTextHandler}
-    />
+    <SearchContainer>
+      <Searchbar
+        placeholder="Search for a location"
+        value={searchKeyword}
+        onSubmitEditing={onSubmitEditingHandler}
+        onChangeText={onChangeTextHandler}
+        icon="map"
+      />
+    </SearchContainer>
   );
 };
