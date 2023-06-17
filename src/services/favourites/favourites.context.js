@@ -57,7 +57,6 @@ export const FavouritesProvider = ({ children }) => {
   useEffect(() => {
     const getFavouritesFromStorage = async () => {
       const savedFavourites = await getFavourites();
-      console.log(savedFavourites);
       setFavourites(savedFavourites);
     };
     getFavouritesFromStorage();
