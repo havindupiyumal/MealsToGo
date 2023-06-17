@@ -11,6 +11,7 @@ import { theme } from "./src/infrastructure/theme";
 
 import { RestaurantsProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationProvider } from "./src/services/location/location.context";
+import { FavouritesProvider } from "./src/services/favourites/favourites.context";
 
 import { Navigation } from "./src/infrastructure/navigation/index";
 
@@ -32,7 +33,9 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <LocationProvider>
           <RestaurantsProvider>
-            <Navigation />
+            <FavouritesProvider>
+              <Navigation />
+            </FavouritesProvider>
           </RestaurantsProvider>
         </LocationProvider>
       </ThemeProvider>

@@ -14,7 +14,7 @@ export const RestaurantsNavigator = () => {
   return (
     <RestaurantsStack.Navigator headerMode="none">
       <RestaurantsStack.Screen
-        name="Restaurants"
+        name="RestaurantsView"
         component={RestaurantScreen}
         screenOptions={({ route, navigation }) => ({
           headerShown: false,

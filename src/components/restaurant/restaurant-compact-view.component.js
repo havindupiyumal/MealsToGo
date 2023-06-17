@@ -6,7 +6,9 @@ import {
   Item,
   CompactImage,
   CompactWebView,
-} from "./rastaurant-compact-view.styles";
+} from "./restaurant-compact-view.styles";
+
+import { FavouriteIcon } from "../favourites/favourites-icon.component";
 
 const isAndroid = Platform.OS === "android";
 
@@ -16,9 +18,12 @@ export const RestaurantCompactView = ({ restaurant }) => {
   const Image = isAndroid ? CompactWebView : CompactImage;
 
   return (
-    <Item>
-      <Image source={{ uri: photos[0] }} />
-      <Text variant="caption">{name}</Text>
-    </Item>
+    <>
+      <FavouriteIcon restaurant={restaurant} />
+      <Item>
+        <Image source={{ uri: photos[0] }} />
+        <Text variant="caption">{name}</Text>
+      </Item>
+    </>
   );
 };

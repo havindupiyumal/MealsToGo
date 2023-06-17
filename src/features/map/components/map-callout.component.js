@@ -1,7 +1,7 @@
 import React from "react";
 import { Callout } from "react-native-maps";
 
-import { RestaurantCompactView } from "../../../components/restaurant/rastaurant-compact-view.component";
+import { RestaurantCompactView } from "../../../components/restaurant/restaurant-compact-view.component";
 
 export const MapCallout = ({ restaurant, navigation }) => {
   return (

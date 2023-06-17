@@ -1,10 +1,11 @@
 import React from "react";
-
+import { Button } from "react-native";
 import Star from "../../../../assets/start";
 import Open from "../../../../assets/open";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
+import { FavouriteIcon } from "../../../components/favourites/favourites-icon.component";
 
 import {
   RestaurantCard,
@@ -33,8 +34,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
+
   return (
     <RestaurantCard key={placeId} elevation={5}>
+      <FavouriteIcon restaurant={restaurant} />
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Text variant="body">{name}</Text>

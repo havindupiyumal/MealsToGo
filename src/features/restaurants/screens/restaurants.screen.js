@@ -19,7 +19,7 @@ export const RestaurantScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <SearchContainer>
-        <Search />
+        <Search navigation={navigation} />
       </SearchContainer>
 
       {error && <Text variant="error">{error}</Text>}
