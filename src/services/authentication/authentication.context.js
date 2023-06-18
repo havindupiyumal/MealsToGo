@@ -52,8 +52,6 @@ export const AuthenticationProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (user) => {
-        console.log("Auth User Subscription.");
-        console.log("Auth User :- ", user);
         setCurrentUser(user);
       },
       (e) => {
@@ -72,7 +70,6 @@ export const AuthenticationProvider = ({ children }) => {
       setIsLoading(false);
       setCurrentUser(user);
     } catch (e) {
-      console.log("Error : ", e);
       setIsLoading(false);
       setError(e.code);
     }

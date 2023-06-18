@@ -31,6 +31,5 @@ export const signOutAuthUser = async () => {
 };
 
 export const updateUserProfileDisplayName = async (user, displayName) => {
-  console.log("Update Details:-", user, displayName);
   return await updateProfile(user, { displayName });
 };
