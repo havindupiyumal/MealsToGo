@@ -8,6 +8,7 @@ import { LoadingIndicator } from "../../../utils/loading-indicator";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import { Search } from "../../../features/restaurants/components/search.component";
+import { UserInfo } from "../../../features/restaurants/components/user-info.component";
 
 import { SearchContainer, RestaurantList } from "./restaurants.screen.styles";
 
@@ -18,6 +19,8 @@ export const RestaurantScreen = ({ navigation }) => {
 
   return (
     <SafeArea>
+      <UserInfo navigation={navigation} />
+
       <SearchContainer>
         <Search navigation={navigation} />
       </SearchContainer>

@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
+  updateProfile,
 } from "firebase/auth";
 
 import { auth } from "../../utils/firebase-config";
@@ -27,4 +28,9 @@ export const signInUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutAuthUser = async () => {
   return await signOut(auth);
+};
+
+export const updateUserProfileDisplayName = async (user, displayName) => {
+  console.log("Update Details:-", user, displayName);
+  return await updateProfile(user, { displayName });
 };

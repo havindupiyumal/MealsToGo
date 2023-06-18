@@ -1,19 +1,20 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { AuthenticationContext } from "../authentication/authentication.context";
 //Asynch Storage utility Functions
-const storeFavourites = async (favourites) => {
+const storeFavourites = async (favourites, key) => {
   try {
     const jsonValue = JSON.stringify(favourites);
-    await AsyncStorage.setItem("@favourites", jsonValue);
+    await AsyncStorage.setItem(key, jsonValue);
   } catch (e) {
     // saving error
   }
 };
 
-const getFavourites = async () => {
+const getFavourites = async (key) => {
   try {
-    const jsonValue = await AsyncStorage.getItem("@favourites");
+    const jsonValue = await AsyncStorage.getItem(key);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     // error reading value
@@ -38,7 +39,12 @@ const isRestaurantInTheFavourites = (favourites, restaurant) => {
 };
 const addFavourite = (favourites, restaurant) => {
   if (!isRestaurantInTheFavourites(favourites, restaurant)) {
-    return [...favourites, restaurant];
+    // This checfk is necessary for first favourite check.
+    if (favourites) {
+      return [...favourites, restaurant];
+    } else {
+      return [restaurant];
+    }
   }
 };
 
@@ -53,19 +59,27 @@ const removeFavourite = (favourites, restaurant) => {
 export const FavouritesProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
 
+  const { currentUser } = useContext(AuthenticationContext);
+
   //load asynch storage favourites on component mount
   useEffect(() => {
-    const getFavouritesFromStorage = async () => {
-      const savedFavourites = await getFavourites();
-      setFavourites(savedFavourites);
-    };
-    getFavouritesFromStorage();
-  }, []);
+    if (currentUser != null) {
+      const key = `@favourites-${currentUser.uid}`;
+      const getFavouritesFromStorage = async () => {
+        const savedFavourites = await getFavourites(key);
+        setFavourites(savedFavourites);
+      };
+      getFavouritesFromStorage();
+    }
+  }, [currentUser]);
 
   // save Favourites whenever favoruites changes
   useEffect(() => {
-    storeFavourites(favourites);
-  }, [favourites]);
+    if (currentUser != null) {
+      const key = `@favourites-${currentUser.uid}`;
+      storeFavourites(favourites, key);
+    }
+  }, [favourites, currentUser]);
 
   // API functions
   const isRestaurantAFavourites = (restaurant) =>

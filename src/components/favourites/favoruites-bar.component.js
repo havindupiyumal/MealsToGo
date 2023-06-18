@@ -15,7 +15,7 @@ const FavouritesBarContainer = styled.View`
 const isAndroid = Platform.OS === "android";
 
 export const FavouritesBar = ({ favourites, navigation }) => {
-  if (!favourites.length) return null;
+  if (favourites && !favourites.length) return null;
 
   const Image = isAndroid ? CompactWebView : CompactImage;
 

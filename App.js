@@ -34,13 +34,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationProvider>
-          <LocationProvider>
-            <RestaurantsProvider>
-              <FavouritesProvider>
-                <Navigation />
-              </FavouritesProvider>
-            </RestaurantsProvider>
-          </LocationProvider>
+          <Navigation />
         </AuthenticationProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
