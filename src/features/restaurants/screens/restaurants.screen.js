@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { TouchableOpacity } from "react-native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
@@ -13,6 +13,8 @@ import { UserInfo } from "../../../features/restaurants/components/user-info.com
 import { SearchContainer, RestaurantList } from "./restaurants.screen.styles";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+
+import { FadeIn } from "../../../components/animations/fade.animation";
 
 export const RestaurantScreen = ({ navigation }) => {
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
@@ -39,7 +41,9 @@ export const RestaurantScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeIn duration="1500">
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeIn>
               </Spacer>
             </TouchableOpacity>
           )}

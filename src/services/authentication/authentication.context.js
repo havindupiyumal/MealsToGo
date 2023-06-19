@@ -52,6 +52,7 @@ export const AuthenticationProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (user) => {
+        console.log("On Load :- ", user);
         setCurrentUser(user);
       },
       (e) => {

@@ -1,21 +1,25 @@
 import React, { useContext } from "react";
-import { View, Alert } from "react-native";
-import { Button } from "react-native-paper";
-import styled from "styled-components/native";
+import { Alert } from "react-native";
+import { List, Avatar } from "react-native-paper";
 
+import { SafeArea } from "../../../utils/safe-area.component";
+import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { colors } from "../../../infrastructure/theme/colors";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
-const CustomButton = styled(Button).attrs({
-  color: colors.brand.primary,
-})`
-  padding: ${(props) => props.theme.space[2]};
+import styled from "styled-components";
+
+const SettingsItem = styled(List.Item)`
+  padding: ${(props) => props.theme.space[3]};
 `;
 
-export const SettingsScreen = () => {
-  const { logOutUser } = useContext(AuthenticationContext);
+const AvatarContainer = styled.View`
+  align-items: center;
+`;
+
+export const SettingsScreen = ({ navigation }) => {
+  const { currentUser, logOutUser } = useContext(AuthenticationContext);
 
   const logOutHandler = () => {
     Alert.alert("Logout", "Are you sure, you want to logout ?", [
@@ -27,17 +31,28 @@ export const SettingsScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Spacer size="large">
-        <CustomButton
-          icon="lock-open-outline"
-          mode="contained"
+    <SafeArea>
+      <AvatarContainer>
+        <Avatar.Icon size={120} icon="human" backgroundColor="#2182BD" />
+        <Spacer position="top" size="large">
+          <Text variant="label">{currentUser && currentUser.email}</Text>
+        </Spacer>
+      </AvatarContainer>
+      <List.Section>
+        <SettingsItem
+          style={{ padding: 16 }}
+          title="Favourites"
+          description="View your favourites"
+          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
+          onPress={() => navigation.navigate("Favourites")}
+        />
+        <SettingsItem
+          style={{ padding: 16 }}
+          title="Logout"
+          left={(props) => <List.Icon {...props} color="black" icon="logout" />}
           onPress={logOutHandler}
-          title="Main"
-        >
-          Logout
-        </CustomButton>
-      </Spacer>
-    </View>
+        />
+      </List.Section>
+    </SafeArea>
   );
 };

@@ -33,7 +33,6 @@ export const AnimationWrapper = styled.View`
 export const Animation = styled(LottiView)`
   width: 60px;
   height: 51px;
-  color: red;
 `;
 
 export const FavouriteIcon = ({ restaurant }) => {
