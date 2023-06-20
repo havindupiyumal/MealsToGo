@@ -49,7 +49,6 @@ export const UserInfo = ({ navigation }) => {
   );
 
   const icon = profilePhoto ? { uri: profilePhoto } : "account-circle";
-  console.log("Profile Icon : -", icon);
   return (
     <InformationContainer>
       <Content selected source={icon} onPress={onPressHandler}>

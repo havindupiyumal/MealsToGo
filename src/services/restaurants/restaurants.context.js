@@ -30,19 +30,18 @@ export const RestaurantsProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     setRestaurants([]);
-    setTimeout(() => {
-      restaurantsRequest(locationValue)
-        .then(restaurantResultTransformer)
-        .then((results) => {
-          setIsLoading(false);
-          setError(null);
-          setRestaurants(results);
-        })
-        .catch((error) => {
-          setIsLoading(false);
-          setError(error);
-        });
-    }, 400);
+    restaurantsRequest(locationValue)
+      .then(restaurantResultTransformer)
+      .then((results) => {
+        setIsLoading(false);
+        setError(null);
+        setRestaurants(results);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+        setError(error.toString());
+      });
   };
 
   useEffect(() => {

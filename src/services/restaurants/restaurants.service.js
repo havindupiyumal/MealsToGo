@@ -3,11 +3,14 @@ import { mocks, mockImages } from "./mock/index";
 import camelize from "camelize";
 
 export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
-  return new Promise((resolve, reject) => {
-    const mock = mocks[location];
-    if (!mock) reject("restaurants not found");
-    resolve(mock);
-  });
+  return fetch(
+    `http://127.0.0.1:5001/mealstogo-344208/us-central1/placesNearby?location=${location}`
+  )
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .catch((error) => console.log(error));
 };
 
 export const restaurantResultTransformer = ({ results = [] }) => {
