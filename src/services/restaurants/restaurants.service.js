@@ -1,11 +1,9 @@
-import { mocks, mockImages } from "./mock/index";
-
 import camelize from "camelize";
 
+import { host } from "../../utils/env";
+
 export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
-  return fetch(
-    `http://127.0.0.1:5001/mealstogo-344208/us-central1/placesNearby?location=${location}`
-  )
+  return fetch(`${host}/placesNearby?location=${location}`)
     .then((response) => {
       console.log(response);
       return response.json();
@@ -20,9 +18,6 @@ export const restaurantResultTransformer = ({ results = [] }) => {
 
     return {
       ...restaurant,
-      photos: restaurant.photos.map((p) => {
-        return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
-      }),
       address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       isClosedTemporarily: isClosedTemporarily,
